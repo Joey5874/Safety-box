@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Joey's Lock Box</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="overlay">
+    <h1>Welcome to Joey's Lock Box</h1>
+    <div class="button-container">
+      <button onclick="startRiddle()">Riddle</button>
+      <button onclick="startTrivia()">Trivia</button>
+      <button onclick="showPinPad()">PIN</button>
+    </div>
+
+    <div id="questionArea"></div>
+    <div id="pinArea" style="display:none;">
+      <div id="pinDisplay">____</div>
+      <div class="pinpad">
+        <button onclick="addDigit(1)">1</button>
+        <button onclick="addDigit(2)">2</button>
+        <button onclick="addDigit(3)">3</button><br>
+        <button onclick="addDigit(4)">4</button>
+        <button onclick="addDigit(5)">5</button>
+        <button onclick="addDigit(6)">6</button><br>
+        <button onclick="addDigit(7)">7</button>
+        <button onclick="addDigit(8)">8</button>
+        <button onclick="addDigit(9)">9</button><br>
+        <button onclick="clearPin()">Clear</button>
+        <button onclick="addDigit(0)">0</button>
+        <button onclick="submitPin()">Enter</button>
+      </div>
+    </div>
+
+    <div id="lockControls" style="display:none;">
+      <h2>Control Lock</h2>
+      <button onclick="sendSignal('lock')">Lock</button>
+      <button onclick="sendSignal('unlock')">Unlock</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
