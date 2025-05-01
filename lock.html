@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lock Control</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="overlay">
+    <h2>Control the Lock</h2>
+    <button onclick="sendSignal('lock')">Lock</button>
+    <button onclick="sendSignal('unlock')">Unlock</button>
+    <br><br>
+    <a href="index.html">Back to Home</a>
+  </div>
+  <script>
+    function sendSignal(command) {
+      fetch(`https://your-arduino-api-url/send?cmd=${command}`)
+        .then(() => alert(`Sent: ${command}`))
+        .catch(() => alert("Error sending to Arduino"));
+    }
+  </script>
+</body>
+</html>
