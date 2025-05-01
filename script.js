@@ -16,26 +16,24 @@ let currentPin = "";
 
 function startRiddle() {
   const r = riddles[Math.floor(Math.random() * riddles.length)];
-  const html = `
+  document.getElementById('questionArea').innerHTML = `
     <h2>${r.question}</h2>
     <input id="answerInput" placeholder="Answer..." />
     <button onclick="checkAnswer('${r.answer}')">Submit</button>`;
-  document.getElementById('questionArea').innerHTML = html;
 }
 
 function startTrivia() {
   const t = triviaQuestions[Math.floor(Math.random() * triviaQuestions.length)];
-  const html = `
+  document.getElementById('questionArea').innerHTML = `
     <h2>${t.question}</h2>
     <input id="answerInput" placeholder="Answer..." />
     <button onclick="checkAnswer('${t.answer}')">Submit</button>`;
-  document.getElementById('questionArea').innerHTML = html;
 }
 
 function checkAnswer(correct) {
   const userAnswer = document.getElementById("answerInput").value.toLowerCase();
   if (userAnswer === correct.toLowerCase()) {
-    showLockControls();
+    window.location.href = "lock.html";
   } else {
     alert("Incorrect! Try again.");
   }
@@ -66,21 +64,9 @@ function updatePinDisplay() {
 
 function submitPin() {
   if (currentPin === "7114") {
-    showLockControls();
+    window.location.href = "lock.html";
   } else {
     alert("Incorrect PIN");
     clearPin();
   }
-}
-
-function showLockControls() {
-  document.getElementById("questionArea").innerHTML = "";
-  document.getElementById("pinArea").style.display = "none";
-  document.getElementById("lockControls").style.display = "block";
-}
-
-function sendSignal(command) {
-  fetch(`https://your-arduino-api-url/send?cmd=${command}`)
-    .then(() => alert(`Sent: ${command}`))
-    .catch(err => alert("Failed to send command to Arduino"));
 }
